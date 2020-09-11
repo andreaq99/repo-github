@@ -75,10 +75,10 @@ function productosRecomendados(){
     }
 }
 
-//Acá empieza el JS para las estrellas
-var puntuacion = ["Muy mala", "Mala", "Buena", "Muy buena", "Excelente"];
+
+var puntuacion = ["1 estrella", "2 estrellas", "3 estrellas", "4 estrellas", "5 estrellas"];
 var aux1 = document.querySelectorAll(".puntuaciones>a");
-var calif = document.querySelector(".puntuaciones .calificacion");
+var puntos = document.querySelector(".puntuaciones .calificacion");
 for (const item of aux1) {
     item.addEventListener('mouseenter', cal);
 }
@@ -87,17 +87,17 @@ function cal(e) {
     var auxi = parseInt(e.target.id);
     var elementos = e.target.parentElement.querySelectorAll(".puntuaciones>a");
 
-    //Quito la clase a todos, no hago un toggle por que cuando sea el cambio a un elemento superior me quitara los anteriores
+ 
     Array.from(elementos).forEach(e => e.classList.remove("seleccionado"));
 
-    //fitlo por los que el atributo id sea menor a el actual y en el foreach le asigno la clase seleccionado
+
     Array.from(elementos).filter(item => { return parseInt(item.id) <= auxi })
         .forEach(e => e.classList.add("seleccionado"));
 
-    //obtengo la calificación y la asigno.
-    calif.innerHTML = `${puntuacion[auxi - 1]}`;
+
+    puntos.innerHTML = `${puntuacion[auxi - 1]}`;
 }
-//acá termina el JS para las estrellas
+
 
 function addComent(){
     let fecha = new Date();
@@ -108,8 +108,8 @@ function addComent(){
     htmlContentToAppend += `<div class="comentarios">
     <div class="col">
         <div class="d-flex w-100 justify-content-between">
-            <h4 class="text-muted">`+ localStorage.getItem("login") +"  "+ `<span class="fa fa-star checked"></span> `.repeat(puntuacion.indexOf(calif.innerHTML)+1) +
-            `<span class="fa fa-star"></span> `.repeat(4-puntuacion.indexOf(calif.innerHTML)) +`</h4>
+            <h4 class="text-muted">`+ localStorage.getItem("login") +"  "+ `<span class="fa fa-star checked"></span> `.repeat(puntuacion.indexOf(puntos.innerHTML)+1) +
+            `<span class="fa fa-star"></span> `.repeat(4-puntuacion.indexOf(puntos.innerHTML)) +`</h4>
             <small class="text-muted">` + fecha.getFullYear() + `-` + fecha.getMonth() + `-` + fecha.getDate()+ ` ` + fecha.getHours()+ `:` + fecha.getMinutes() + `:` + fecha.getSeconds() +   `</small>
         </div>
         <div>
