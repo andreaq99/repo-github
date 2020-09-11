@@ -10,9 +10,12 @@
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" />
 </head>
 
 <body>
@@ -22,17 +25,103 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+      <div class="dropdown">
+        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="py-2 d-none d-md-inline-block" id="NombreDeUsuario" href="#" ></a>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="my-profile.html">Perfil</a>
+          <a class="dropdown-item" href="cart.html">Mi carrito</a>
+          <a class="dropdown-item" href="login.html" onclick="exit();">Salir</a>
+        </div>
+      </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 3 (Fecha de entrega: 13/09/2020) y Entrega 4 (Fecha de entrega: 20/09/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <main role="main">
+    <div class="container mt-5">
+      <div class="text-center p-4">
+        <h2>Descripción del producto</h2>
+        <p class="lead">Encontrarás aquí toda la información del producto seleccionado.</p>
+
+      </div>
+      <h3 id="productName"></h3>
+      <hr class="my-3">
+      <dl>
+        <dt>Categoria:</dt>
+        <dd>
+          <a href="products.html" id="productcat"></a>
+        </dd>
+
+        <dt>Descripción:</dt>
+        <dd>
+          <p id="productDescription"></p>
+        </dd>
+
+        <dt>Cantidad de productos vendidos:</dt>
+        <dd>
+          <p id="productsoldCount"></p>
+        </dd>
+
+        <dt>Precio:</dt>
+        <dd>
+          <b><p id="productcost"></p></b>
+        </dd>
+
+        <dt>Imágenes ilustrativas
+          <div style="width: 30rem;" id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div id="productImage" class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="img/prod1.jpg" class="d-block w-100">
+              </div>
+              
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          
+        </dt>
+        <dd>
+
+          </div>
+        </dd>
+      </dl>
+      <div>
+        <h3 class="text-center p-4"><b>Comentarios</b></h3>
+        <div class="comentbox">
+          <h5>Escribe tu comentario:</h5>
+          <textarea id="addcoment" class="form-control" rows="5" cols="100" placeholder="Deja tu comentario aquí"></textarea>
+          <span><input onclick="addComent()" class="btn btn-secondary" type="submit" value="Enviar">
+            <h3 class="text-muted" > <b>Puntuacion: </b>
+              <span class="puntuaciones">
+              <a  id="1"><i class="fas fa-star"></i></a>
+              <a  id="2"><i class="fas fa-star"></i></a>
+              <a  id="3"><i class="fas fa-star"></i></a>
+              <a  id="4"><i class="fas fa-star"></i></a>
+              <a  id="5"><i class="fas fa-star"></i></a>
+              <span class="calificacion"></span>
+            </span></h3>
+            </span>
+        
+        </div>
+        <p class="caja" id="comentario"></p>
+      </div>
+     
+        <dt class="psimilares"><h4>Productos similares</h4></dt>
+        <dd>
+          <div class="row text-center text-lg-left pt-2" id="relatedProducts">
+
+          </div>
+        </dd>
+        
+      </div>
     </div>
-  </div>
+  </main>
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">
